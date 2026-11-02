@@ -101,8 +101,8 @@ local function A0InterfaceFactory()
 					AccentDim = Color3.fromRGB(85, 85, 85),
 					Font = Enum.Font.Gotham,
 					FontMedium = Enum.Font.GothamMedium,
-					TextSize = 13,
-					Radius = 5,
+					TextSize = 12,
+					Radius = 7
 					GearIcon = "rbxassetid://6031280882",
 				}
 
@@ -12911,10 +12911,10 @@ local __A0Boot = (function()
 	_G.__A0ActiveBoot = Boot
 	local RunLocal = game:GetService("RunService")
 	local TweenServiceLocal = game:GetService("TweenService")
-	local Mint = Color3.fromRGB(60, 220, 160)
-	local Soft = Color3.fromRGB(150, 240, 205)
-	local WhiteLocal = Color3.fromRGB(248, 251, 252)
-	local DimLocal = Color3.fromRGB(188, 194, 198)
+	local Mint = Color3.fromRGB(255, 255, 255)
+	local Soft = Color3.fromRGB(175, 175, 175)
+	local WhiteLocal = Color3.fromRGB(230, 230, 230)
+	local DimLocal = Color3.fromRGB(120, 120, 120)
 	local function NewLocal(Class, Props, ParentLocal)
 		local Object = Instance.new(Class)
 		for KeyLocal, ValueLocal in pairs(Props or {}) do
@@ -13181,8 +13181,9 @@ local __A0Boot = (function()
 			return
 		end
 
+		self:StopMotion()
 		local FadeInfo =
-			TweenInfo.new(self.ReducedMotion and 0.12 or 0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+			TweenInfo.new(self.ReducedMotion and 0.12 or 0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out
 		self.PartFades = {}
 		for _, ItemLocal in ipairs(self.Overlay:GetDescendants()) do
 			local Goals = {}
@@ -13287,7 +13288,7 @@ local __A0Boot = (function()
 	Boot.Overlay = NewLocal("Frame", {
 		Name = "A0_LoadingOverlay",
 		Size = UDim2.fromScale(1, 1),
-		BackgroundColor3 = Color3.fromRGB(15, 18, 21),
+		BackgroundColor3 = Color3.fromRGB(14, 14, 14),
 		BackgroundTransparency = 0.12,
 		Active = true,
 		BorderSizePixel = 0,
@@ -13339,17 +13340,37 @@ local __A0Boot = (function()
 			NumberSequenceKeypoint.new(1, 1),
 		}),
 	}, StrokeLocal)
-	local LogoLocal = NewLocal("ImageLabel", {
+	local LogoShadowLocal = NewLocal("TextLabel", {
+		Name = "A0LogoShadow",
+		Text = "S",
+		Font = Enum.Font.GothamBlack,
+		TextSize = 132,
+		TextColor3 = Color3.fromRGB(85, 85, 85),
+		TextTransparency = 0.45,
+		Size = UDim2.fromOffset(176, 176),
+		Position = UDim2.new(0.5, 3, 0.5, 3),
+		AnchorPoint = Vector2.new(0.5, 0.5),
+		BackgroundTransparency = 1,
+		TextXAlignment = Enum.TextXAlignment.Center,
+		TextYAlignment = Enum.TextYAlignment.Center,
+		Rotation = -6,
+		ZIndex = 4,
+	}, StageLocal)
+	local LogoLocal = NewLocal("TextLabel", {
 		Name = "A0Logo",
-		Image = "rbxassetid://118677754990717",
+		Text = "S",
+		Font = Enum.Font.GothamBlack,
+		TextSize = 132,
+		TextColor3 = WhiteLocal,
+		TextStrokeColor3 = Color3.fromRGB(42, 42, 42),
+		TextStrokeTransparency = 0.35,
 		Size = UDim2.fromOffset(176, 176),
 		Position = UDim2.fromScale(0.5, 0.5),
 		AnchorPoint = Vector2.new(0.5, 0.5),
 		BackgroundTransparency = 1,
-		ImageColor3 = Color3.new(1, 1, 1),
-		ResampleMode = Enum.ResamplerMode.Default,
-		ScaleType = Enum.ScaleType.Fit,
-		ZIndex = 4,
+		TextXAlignment = Enum.TextXAlignment.Center,
+		TextYAlignment = Enum.TextYAlignment.Center,
+		ZIndex = 5,
 	}, StageLocal)
 	Boot.Heading = NewLocal("TextLabel", {
 		Text = "INITIALIZING",
@@ -13376,7 +13397,7 @@ local __A0Boot = (function()
 		Name = "InitializationRail",
 		Size = UDim2.fromOffset(200, 3),
 		Position = UDim2.fromOffset(80, 352),
-		BackgroundColor3 = Color3.fromRGB(51, 65, 61),
+		BackgroundColor3 = Color3.fromRGB(42, 42, 42),
 		BorderSizePixel = 0,
 		ZIndex = 3,
 	}, StageLocal)
@@ -13429,7 +13450,7 @@ local __A0Boot = (function()
 	local Breathe = TweenServiceLocal:Create(
 		LogoLocal,
 		TweenInfo.new(2.4, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut, -1, true),
-		{ ImageTransparency = 0.06 }
+		{ TextTransparency = 0.06 }
 	)
 	table.insert(Boot.Motion, InnerSpin)
 	table.insert(Boot.Motion, Breathe)
@@ -27321,14 +27342,14 @@ local function __A0Initialize()
 	__A0Boot:Budget()
 	local LibraryWindow = UiLibrary:Window({
 		Logo = "rbxassetid://118677754990717",
-		HeaderLogoSize = Vector2.new(34, 34),
+		HeaderLogoSize = Vector2.new(18, 18),
 		MobileLogo = "rbxassetid://118677754990717",
 		SingleColumn = true,
-		Width = 500,
+		Width = 540,
 		Height = 360,
-		MinWidth = 440,
+		MinWidth = 480,
 		MinHeight = 300,
-		Desktop = { Width = 500, Height = 360, MinWidth = 440, MinHeight = 300 },
+		Desktop = { Width = 540, Height = 360, MinWidth = 480, MinHeight = 300 },
 		Mobile = {
 			Width = 460,
 			Height = 300,
@@ -27345,7 +27366,11 @@ local function __A0Initialize()
 		ThemeFolder = "UltraInstinctShaggyHub/DestinyMint",
 		TabStyle = "side",
 		TabWidth = 130,
-		HideHeader = true,
+		HideHeader = false,
+		HeaderHeight = 36,
+		HeaderTextSize = 15,
+		HeaderPadding = 14,
+		ContentTopGap = 10,
 		Footer = false,
 		OuterDragHandle = false,
 		Draggable = true,
