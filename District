@@ -13183,7 +13183,7 @@ local __A0Boot = (function()
 
 		self:StopMotion()
 		local FadeInfo =
-			TweenInfo.new(self.ReducedMotion and 0.12 or 0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out
+			TweenInfo.new(self.ReducedMotion and 0.12 or 0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
 		self.PartFades = {}
 		for _, ItemLocal in ipairs(self.Overlay:GetDescendants()) do
 			local Goals = {}
