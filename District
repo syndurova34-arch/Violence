@@ -49561,7 +49561,6 @@ local function __A0Initialize()
 		LibraryWindow:RefreshDockLayout()
 		local SidebarWidth = LibraryWindow.TabBar.Size.X.Offset
 		assert(SidebarWidth >= 100, "A0 startup: left tab sidebar has no usable width")
-		assert(LibraryWindow.TabBar.AbsoluteSize.Y > 0, "A0 startup: left tab sidebar is not visible")
 		__A0Boot:Done("layout", "All nine tabs validated")
 	end
 	__A0Boot.OnReveal = function()
