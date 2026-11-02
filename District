@@ -102,7 +102,7 @@ local function A0InterfaceFactory()
 					Font = Enum.Font.Gotham,
 					FontMedium = Enum.Font.GothamMedium,
 					TextSize = 12,
-					Radius = 7
+					Radius = 7,
 					GearIcon = "rbxassetid://6031280882",
 				}
 
