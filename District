@@ -49543,8 +49543,9 @@ local function __A0Initialize()
 				TabLocal and TabLocal.Page and TabLocal.Page.Parent and TabLocal.Button and TabLocal.Button.Parent,
 				"A0 startup: tab " .. IndexLocal .. " incomplete"
 			)
+			local NavigationLocal = LibraryWindow.TabStyle == "dock" and TabLocal.Slot or TabLocal.Button
 			assert(
-				TabLocal.Slot and TabLocal.Slot.Parent == LibraryWindow.TabBar,
+				NavigationLocal and NavigationLocal.Parent == LibraryWindow.TabBar,
 				"A0 startup: missing tab navigation " .. tostring(TabLocal.Name)
 			)
 			local Sections = 0
